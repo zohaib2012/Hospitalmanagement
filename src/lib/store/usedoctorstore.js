@@ -2,27 +2,34 @@
 import { create } from "zustand";
 import axioinstance from "../axios";
 import axios from "axios";
+// import axios from "axios";
 
 export let usedoctorstore=create((set)=>({
     Doctors:[],
     loading:false,
 
 
-adddoctor:async (doctordata)=>{
-    set({
-        loading:true
-    })
+adddoctor:async(data)=>{
+    set({loading:true})
     try {
-        
-        const response = await axios.post('http://localhost:3000/api/adddoctor', doctordata, { withCredentials: true });
-        
-        set((doctorstate)=>({
-            Doctors:[...doctorstate.Doctors, response.data]
+        let{ name,
+            specialization,
+            consultationFees,
+            email,
+            password}=data
+        let response =await axios.post("http://localhost:3000/api/adddoctor",{ name,
+            specialization,
+            consultationFees,
+            email,
+            password})
+        set((state)=>({
+            Doctors:[...state.Doctors, response.data]
         }))
     } catch (error) {
-        console.log(error.message)
+        console.log(error)
     }
 },
+
 getdoctor:async()=>{
     set({loading:true})
     try {

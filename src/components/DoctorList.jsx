@@ -35,7 +35,7 @@ const DoctorList = () => {
                                     <td className="px-4 py-2 border-b">{doctor.name}</td>
                                     <td className="px-4 py-2 border-b">{doctor.email}</td>
                                     <td className="px-4 py-2 border-b">{doctor.specialization}</td>
-                                    <td className="px-4 py-2 border-b">{doctor.consultationfees}</td>
+                                    <td className="px-4 py-2 border-b">{doctor.consultationFees}</td>
                                 </tr> 
                             ))
                         ) : (
